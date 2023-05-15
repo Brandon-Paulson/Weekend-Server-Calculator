@@ -10,15 +10,15 @@ function sendArithmetic(event) {
     console.log(dataSet);
     console.log(dataSet.inputOne);
     if (dataSet.inputArithmetic == '+' ) {
-        document.querySelector('#contentDiv').innerHTML += (Number(dataSet.inputOne) + Number(dataSet.inputTwo));
+        document.querySelector('#contentDiv').innerHTML += `<div> ${(Number(dataSet.inputOne) + Number(dataSet.inputTwo))} </div>`;
     }
     else if (dataSet.inputArithmetic == '-') {
-        document.querySelector('#contentDiv').innerHTML += (Number(dataSet.inputOne) - Number(dataSet.inputTwo));
+        document.querySelector('#contentDiv').innerHTML += `<div> ${(Number(dataSet.inputOne) - Number(dataSet.inputTwo))} </div>`;
     }
     else if (dataSet.inputArithmetic == '*') {
-        document.querySelector('#contentDiv').innerHTML += (Number(dataSet.inputOne) * Number(dataSet.inputTwo));
+        document.querySelector('#contentDiv').innerHTML += `<div> ${(Number(dataSet.inputOne) * Number(dataSet.inputTwo))} </div>`;
     }
     else {
-        document.querySelector('#contentDiv').innerHTML += (Number(dataSet.inputOne) / Number(dataSet.inputTwo));
+        document.querySelector('#contentDiv').innerHTML += `<div> ${(Number(dataSet.inputOne) / Number(dataSet.inputTwo))} </div>`;
     }
 };
