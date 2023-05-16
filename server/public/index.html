@@ -5,7 +5,7 @@
     <title>Weekend Server Calculator</title>
 </head>
 <body>
-    <form onsubmit="sendArithmetic(event)">
+    <form id="submitForm" onsubmit="sendArithmetic(event)" action="calculatingValue" method="post">
         <input id="inputValueOne" type="number" placeholder="Value One">
         <input id="arithmetic" type="text" placeholder="+, -, /, *"> 
         <input id="inputValueTwo" type="number" placeholder="Value Two">

@@ -8,3 +8,8 @@ app.use(express.static('server/public'));
 app.listen(PORT, () => {
     console.log('server running on: ', PORT);
   });
+
+  app.post('/calculatingValue',(req, res) => {    
+    calculatingValue.push(req.body);
+    res.sendStatus(201);
+});
