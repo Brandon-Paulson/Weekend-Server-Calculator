@@ -24,19 +24,18 @@ console.log('Hey the server works!');
 // };
 
 
-const formInput = document.querySelector('.form');
+const formInput = document.querySelector('#submitForm');
 
 formInput.addEventListener('submit', event => {
     event.preventDefault();
     const formData = new FormData(formInput);
-    const data = object.fromEntries(formData);
-
-    fetch('/calculatingValue', {
+    console.log(formData);
+    fetch('/calculatingValue', {//stringifiy
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(formData)
     }).then(res => res.json())
-    .then(data => console.log(data))
 });
+
