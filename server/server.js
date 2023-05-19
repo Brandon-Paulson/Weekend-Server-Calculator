@@ -4,15 +4,14 @@ const PORT = process.env.PORT || 8000;
 app.use(express.static('server/public'));
 app.use(express.json());
 
+let calculatingValue = [];
 
 app.listen(PORT, () => {
     console.log('server running on: ', PORT);
   });
 
-  let calculatingValue = [];
-
-  app.get('/calculatingValue', (req, res) => {
-    console.log('GET Request for quotes', req)
+app.get('/calculatingValue', (req, res) => {
+    console.log('GET Request for values', req)
     res.status(200).send(calculatingValue);
 });
 
@@ -26,4 +25,34 @@ app.post('/calculatingValue', (req, res) => {
   calculatingValue.push(req.body);
   // Send back a status code of 201
   res.sendStatus(201);
+  calculatingNumber(calculatingValue);
 });
+
+app.get('/solutionValue', (req, res) =>{
+  console.log('Request for solution was made')
+  res.send(calculatingNumber(calculatingValue))
+})
+
+
+function calculatingNumber(array) {
+  console.log(array);
+  for (let index of array) {
+    if (index.operator == '+' ) {
+       let solutionValue = Number(index.num1) + Number(index.num2);
+       console.log(solutionValue);
+    }
+    else if (index.operator == '-') {
+      let solutionValue = Number(index.num1) - Number(index.num2);
+      console.log(solutionValue);
+    }
+    else if (index.operator == '*') {
+      let solutionValue = Number(index.num1) * Number(index.num2);
+      console.log(solutionValue);
+    }
+    else {
+      let solutionValue = Number(index.num1) / Number(index.num2);     
+      console.log(solutionValue);
+    }
+  }
+};
+
