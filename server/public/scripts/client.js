@@ -1,30 +1,5 @@
 console.log('Hey the server works!');
 
-
-// function sendArithmetic(event) {
-//     event.preventDefault();
-//     let dataSet= {
-//     inputOne: document.querySelector('#inputValueOne').value,
-//     inputArithmetic: document.querySelector('#arithmetic').value,
-//     inputTwo: document.querySelector('#inputValueTwo').value
-//     }
-//     console.log(dataSet);
-//     console.log(dataSet.inputOne);
-//     if (dataSet.inputArithmetic == '+' ) {
-//         document.querySelector('#contentDiv').innerHTML += `<div> ${(Number(dataSet.inputOne) + Number(dataSet.inputTwo))} </div>`;
-//     }
-//     else if (dataSet.inputArithmetic == '-') {
-//         document.querySelector('#contentDiv').innerHTML += `<div> ${(Number(dataSet.inputOne) - Number(dataSet.inputTwo))} </div>`;
-//     }
-//     else if (dataSet.inputArithmetic == '*') {
-//         document.querySelector('#contentDiv').innerHTML += `<div> ${(Number(dataSet.inputOne) * Number(dataSet.inputTwo))} </div>`;
-//     }
-//     else {
-//         document.querySelector('#contentDiv').innerHTML += `<div> ${(Number(dataSet.inputOne) / Number(dataSet.inputTwo))} </div>`;
-//     }
-// };
-
-
 function submitForm(event) {
     // Stop page from refreshing
     event.preventDefault();
@@ -52,16 +27,29 @@ function submitForm(event) {
             'Content-Type': 'application/json'  // <-- Must specify content is JSON!
         }
     }).then((response) => {
-        console.log('POST Response:', response.json())});
-    .then(  
-    fetch('/solutionValue')
-        .then((response) => {
-            console.log('We are at the solution:', response);
-        })
-        .catch((error) => {
-            console.log(error);
-            alert('Something went wrong.');
-        }));
+        console.log('POST Response:', response.json())
+    });
+    // fetch('/solutionValue')
+    // .then((json) => {
+    //     console.log('We are at the solution:', JSON.stringify(json));
+    // })
+    // .catch((error) => {
+    //     console.log(error);
+    //     alert('Something went wrong.');
+    // });
+fetch('/solutionValue')
+  .then((response) => {
+    console.log('Response:', response);
+    return response.json();
+  })
+  .then((json) => {
+    console.log('Response text:', json);
+    // TODO: append quotes to the dom?
+  })
+  .catch((error) => {
+    console.log(error);
+    alert('Something went wrong.');
+  });
     }
         // Clear our form
         //   document.querySelector('#inputValueOne').value = '';
@@ -70,4 +58,13 @@ function submitForm(event) {
         // Clear our content and refresh it
         //   document.querySelector('#submitForm').innerHTML = '';
    
+
+//  fetch('/solutionValue')
+//         .then((response) => {
+//             console.log('We are at the solution:', response);
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//             alert('Something went wrong.');
+//         });
 

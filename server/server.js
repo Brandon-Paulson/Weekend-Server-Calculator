@@ -17,13 +17,8 @@ app.get('/calculatingValue', (req, res) => {
 
 app.post('/calculatingValue', (req, res) => {
   // The data (body) sent from the client is saved for us in `req.body`
-
-  // Note that without express.json (or some other body-parsing middleware),
-  // req.body will be undefined!
-
   console.log('Adding new value:', req.body);
   calculatingValue.push(req.body);
-  // Send back a status code of 201
   res.sendStatus(201);
   calculatingNumber(calculatingValue);
 });
@@ -32,6 +27,14 @@ app.get('/solutionValue', (req, res) =>{
   console.log('Request for solution was made')
   res.send(calculatingNumber(calculatingValue))
 })
+
+
+// app.post('/solutionValue', (req, res) => {
+//   console.log('Adding solution value:', req.body);
+//   solutionValue.push(req.body);
+//   res.sendStatus(201);
+//   calculatingNumber(calculatingValue);
+// });
 
 
 function calculatingNumber(array) {
