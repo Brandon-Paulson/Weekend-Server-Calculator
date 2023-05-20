@@ -25,7 +25,8 @@ app.post('/calculatingValue', (req, res) => {
 
 app.get('/solutionValue', (req, res) =>{
   console.log('Request for solution was made')
-  res.send(calculatingNumber(calculatingValue))
+  console.log('Hey this is where we are looking', calculatingNumber(calculatingValue))
+  res.status(201).send({value:calculatingNumber(calculatingValue)})
 })
 
 
@@ -42,19 +43,19 @@ function calculatingNumber(array) {
   for (let index of array) {
     if (index.operator == '+' ) {
        let solutionValue = Number(index.num1) + Number(index.num2);
-       console.log(solutionValue);
+       return solutionValue;
     }
     else if (index.operator == '-') {
       let solutionValue = Number(index.num1) - Number(index.num2);
-      console.log(solutionValue);
+      return solutionValue;
     }
     else if (index.operator == '*') {
       let solutionValue = Number(index.num1) * Number(index.num2);
-      console.log(solutionValue);
+      return solutionValue;
     }
     else {
       let solutionValue = Number(index.num1) / Number(index.num2);     
-      console.log(solutionValue);
+      return solutionValue;
     }
   }
 };

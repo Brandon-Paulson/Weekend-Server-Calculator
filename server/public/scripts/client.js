@@ -28,43 +28,44 @@ function submitForm(event) {
         }
     }).then((response) => {
         console.log('POST Response:', response.json())
-    });
-    // fetch('/solutionValue')
-    // .then((json) => {
-    //     console.log('We are at the solution:', JSON.stringify(json));
-    // })
-    // .catch((error) => {
-    //     console.log(error);
-    //     alert('Something went wrong.');
-    // });
-fetch('/solutionValue')
-  .then((response) => {
-    console.log('Response:', response);
-    return response.json();
-  })
-  .then((json) => {
-    console.log('Response text:', json);
-    // TODO: append quotes to the dom?
-  })
-  .catch((error) => {
-    console.log(error);
-    alert('Something went wrong.');
-  });
-    }
+    }) .then (appendData())
+}
+
+
+function appendData() {
+    fetch('/solutionValue' )
+    .then (fetch('/solutionValue' ))
+    .then(response => response.json())
+    .then((json) => {
+console.log(json);
+        document.querySelector('#inputValueOne').value = '';
+        document.querySelector('#inputValueTwo').value = '';
+        document.querySelector('#arithmetic').value = '';
+
+        document.querySelector('#contentDiv').innerHTML += `<p> ${json.value} </p>`
+})};
+
+function clearOnSubmit(event) {
+
+}
+
+// fetch('/solutionValue')
+//   .then((response) => {
+//     console.log('Response:', response);
+//     return response.json();
+//   })
+//   .then((json) => {
+//     console.log('Response text:', json);
+//     // TODO: append quotes to the dom?
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//     alert('Something went wrong.');
+//   });
+    
         // Clear our form
         //   document.querySelector('#inputValueOne').value = '';
         //   document.querySelector('#inputValueTwo').value = '';
         //   document.querySelector('#arithmetic').value = '';
         // Clear our content and refresh it
         //   document.querySelector('#submitForm').innerHTML = '';
-   
-
-//  fetch('/solutionValue')
-//         .then((response) => {
-//             console.log('We are at the solution:', response);
-//         })
-//         .catch((error) => {
-//             console.log(error);
-//             alert('Something went wrong.');
-//         });
-
