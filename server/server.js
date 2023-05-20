@@ -32,6 +32,11 @@ app.get('/solutionValue', (req, res) =>{
   res.status(201).send(calculatingValue)
 })
 
+app.delete('/solutionValue', (req, res) => {
+  removeSolutionValue(req.params.solutionValue);
+  res.sendStatus(204);
+});
+
 function calculatingNumber(inputObject) {
     if (inputObject.operator == '+' ) {
        let solutionValue = Number(inputObject.num1) + Number(inputObject.num2);

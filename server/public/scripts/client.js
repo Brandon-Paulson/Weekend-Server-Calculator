@@ -47,6 +47,13 @@ for (let value of json) {
 }}
 )};
 
-function clearOnSubmit(event) {
-
+function clearOnSubmit(onClick) {
+    document.querySelector('#contentDiv').innerHTML = '';
+    fetch('/solutionValue', {
+        method: 'Delete',
+        headers: {
+            'Content-Type': 'application/json'  
+        }})
+    .then(res => res.json())
+    .then(res => console.log('THIS SPOT', res))
 }
