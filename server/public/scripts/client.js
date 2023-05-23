@@ -50,10 +50,7 @@ for (let value of json) {
 function clearOnSubmit(onClick) {
     document.querySelector('#contentDiv').innerHTML = '';
     fetch('/solutionValue', {
-        method: 'Delete',
-        headers: {
-            'Content-Type': 'application/json'  
-        }})
+        method: 'DELETE'})
     .then(res => res.json())
-    .then(res => console.log('THIS SPOT', res))
+    .then(res => {console.log('THIS SPOT', res)})
 }

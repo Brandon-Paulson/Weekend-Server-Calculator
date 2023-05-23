@@ -33,8 +33,10 @@ app.get('/solutionValue', (req, res) =>{
 })
 
 app.delete('/solutionValue', (req, res) => {
-  removeSolutionValue(req.params.solutionValue);
-  res.sendStatus(204);
+ let valueIndex = req.params.solutionValue;
+ let deletedValue = solutionValue[valueIndex];
+ solutionValue[valueIndex] = []
+  res.sendStatus(204).send(deletedValue);
 });
 
 function calculatingNumber(inputObject) {
